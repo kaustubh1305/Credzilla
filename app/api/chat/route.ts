@@ -1,12 +1,12 @@
 
-import { streamText, UIMessage, convertToModelMessages, stepCountIs, createUIMessageStream, createUIMessageStreamResponse } from 'ai';
+import { streamText, UIMessage, convertToModelMessages, stepCountIs, createUIMessageStream, createUIMessageStreamResponse, tool } from 'ai';
 import { z } from 'zod';
 import { MODEL } from '@/config';
 import { SYSTEM_PROMPT } from '@/prompts';
 import { isContentFlagged } from '@/lib/moderation';
 import { webSearch } from './tools/web-search';
 import { vectorDatabaseSearch } from './tools/search-vector-database';
-import { searchLiveCreditCardData } from '../../../lib/exaSearch';
+import { searchLiveCreditCardData } from '@/lib/exaSearch';
 
 export const maxDuration = 30;
 export async function POST(req: Request) {
