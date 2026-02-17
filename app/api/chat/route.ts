@@ -71,10 +71,10 @@ export async function POST(req: Request) {
             // --- NEW EXA TOOL ADDED HERE ---
             exaSearch: tool({
                 description: 'Search the web for live, up-to-date credit card information, current sign-up bonuses, and live interest rates. Use this when the user asks about current offers or dynamic data.',
-                parameters: z.object({
+                inputSchema: z.object({
                     query: z.string().describe('The specific search query to look up live credit card info.'),
                 }),
-                // @ts-ignore: Bypasses Zod's strict-mode inference mismatch
+                
                 execute: async ({ query }: { query: string }) => {
                     const results = await searchLiveCreditCardData(query);
                     return { context: results }; 
