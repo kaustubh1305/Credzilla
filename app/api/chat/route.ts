@@ -74,7 +74,7 @@ export async function POST(req: Request) {
                 parameters: z.object({
                     query: z.string().describe('The specific search query to look up live credit card info.'),
                 }),
-                execute: async ({ query }) => {
+                execute: async ({ query }: { query: string }) => {
                     const results = await searchLiveCreditCardData(query);
                     return { context: results }; 
                 },
