@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "MyAI3",
-  description: "MyAI3",
+  title: "Credzilla",
+  description: "Your AI-powered credit card advisor.",
 };
 
 export default function RootLayout({
