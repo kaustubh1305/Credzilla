@@ -12,8 +12,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+import { AI_NAME } from "@/config";
+
 export const metadata: Metadata = {
-  title: "Credzilla",
+  title: AI_NAME,
   description: "Your AI-powered credit card advisor.",
 };
 
