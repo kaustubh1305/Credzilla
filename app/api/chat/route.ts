@@ -1,10 +1,12 @@
 
 import { streamText, UIMessage, convertToModelMessages, stepCountIs, createUIMessageStream, createUIMessageStreamResponse } from 'ai';
+import { z } from 'zod';
 import { MODEL } from '@/config';
 import { SYSTEM_PROMPT } from '@/prompts';
 import { isContentFlagged } from '@/lib/moderation';
 import { webSearch } from './tools/web-search';
 import { vectorDatabaseSearch } from './tools/search-vector-database';
+import { searchLiveCreditCardData } from '../../../lib/exaSearch';
 
 export const maxDuration = 30;
 export async function POST(req: Request) {
@@ -66,6 +68,18 @@ export async function POST(req: Request) {
         tools: {
             webSearch,
             vectorDatabaseSearch,
+            // --- NEW EXA TOOL ADDED HERE ---
+            exaSearch: tool({
+                description: 'Search the web for live, up-to-date credit card information, current sign-up bonuses, and live interest rates. Use this when the user asks about current offers or dynamic data.',
+                parameters: z.object({
+                    query: z.string().describe('The specific search query to look up live credit card info.'),
+                }),
+                execute: async ({ query }) => {
+                    const results = await searchLiveCreditCardData(query);
+                    return { context: results }; 
+                },
+            }),
+            // -------------------------------
         },
         stopWhen: stepCountIs(10),
         providerOptions: {
