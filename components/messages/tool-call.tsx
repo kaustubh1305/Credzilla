@@ -30,6 +30,22 @@ const TOOL_DISPLAY_MAP: Record<string, ToolDisplay> = {
         result_icon: <Search className="w-4 h-4" />,
         formatArgs: formatWebSearchArgs,
     },
+    // --- ADD EXA SEARCH ---
+    exaSearch: {
+        call_label: "Searching live web offers...",
+        call_icon: <Globe className="w-4 h-4" />, // Uses the Globe icon already imported
+        result_label: "Searched live web offers",
+        result_icon: <Globe className="w-4 h-4" />,
+        formatArgs: formatWebSearchArgs,
+    },
+    // --- ADD PINECONE DATABASE SEARCH ---
+    vectorDatabaseSearch: {
+        call_label: "Consulting bank agreements...",
+        call_icon: <Book className="w-4 h-4" />, // Uses the Book icon already imported
+        result_label: "Consulted bank agreements",
+        result_icon: <Book className="w-4 h-4" />,
+        formatArgs: formatWebSearchArgs, // Assuming your vector search also uses a 'query' parameter
+    },
 };
 
 const DEFAULT_TOOL_DISPLAY: ToolDisplay = { call_label: "Using tool", call_icon: <Wrench className="w-4 h-4" />, result_label: "Used tool", result_icon: <Wrench className="w-4 h-4" /> };
