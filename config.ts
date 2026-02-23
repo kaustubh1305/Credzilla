@@ -33,7 +33,7 @@ export const DATE_AND_TIME = getDateAndTime();
 export const AI_NAME = "Credzilla";
 export const OWNER_NAME = "Kaustubh Arbune";
 
-export const WELCOME_MESSAGE = `Hello! I'm ${AI_NAME}, an AI assistant created by ${OWNER_NAME}.`
+export const WELCOME_MESSAGE = `Hi, I'm Credzilla - your AI advisor ready to help you choose the right credit cards, decode your benefits, and maximize your everyday rewards.`
 
 export const CLEAR_CHAT_TEXT = "New";
 
